@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
+
+type Action = { type: 'INCREASE'} | {type: 'DECREASE'}; // 액션을 |로 연달아 나열하기
+
+function reducer(state: number, action: Action): number{
+    switch(action.type){
+        case 'INCREASE':
+            return state + 1;
+        case 'DECREASE':
+            return state - 1;
+        default:
+            throw new Error('Unhandled action');
+    }
+}
 
 function Counter(){
-    type Information = {name: string; description: string};
-    const [info, setInformation] = useState<Information | null>(null);
-
-    type Todo = {id: number; text:string; done: boolean };
-    const [todos, setTodos ] = useState<Todo[]>([]); // 까다로운 구조의 객체일 때는 Generics를 명시하는 것이 좋음
-    // useState([] as Todo[]); Type Assertion
-    
-    const [count, setCount] = useState<number>(0); // 제네릭 생략 가능
-    const onIncrease = () => setCount(count + 1);
-    const onDecrease = () => setCount(count - 1);
+    const [count, dispatch] = useReducer(reducer, 0);
+    const onIncrease = () => dispatch({ type: 'INCREASE'});
+    const onDecrease = () => dispatch({ type: 'DECREASE'});
     return (
         <div>
             <h1>{count}</h1>
