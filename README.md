@@ -95,7 +95,7 @@ const [todos, setTodos] = useState([] as Todo[]);
 > 타입스크립트 환경에서 `useReducer`를 사용해보자
 - 아까 만들었던 Counter 컴포넌트를 useState가 아닌 useReducer를 사용하는 코드로 만들어보자
 
-Counter.tsx 참고
+**Counter.tsx** 참고
 
 **Action**
 
@@ -124,7 +124,7 @@ function reducer(state: number, action: Action): number
 
 - 자동완성이 되는 것과 타입검사가 되는 것을 직접 확인해보기 위해 ReducerSample이라는 컴포넌트를 만들어보자
 
-src/ReducerSample.tsx
+**src/ReducerSample.tsx**
 
 ```python
 type State = {
